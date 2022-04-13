@@ -69,7 +69,7 @@ func main() {
 			loc = time.Local
 		}
 		indexer := es.NewIndex(client, processor.Output.ElasticSearch.Index, loc)
-		handle := handler.NewHandler(writer, indexer)
+		handle := handler.NewHandler(&processor, writer, indexer)
 		handle.AddFilters(filters...)
 		handle.AddFilters(filter.AddUriFieldFilter("url", "uri"))
 		for _, k := range toKqConf(processor.Input.Kafka) {

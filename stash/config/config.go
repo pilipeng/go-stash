@@ -46,6 +46,10 @@ type (
 		MaxBytes   int    `json:",default=10485760"` // 10M
 	}
 
+	MysqlConf struct {
+		DataSource string
+	}
+
 	Cluster struct {
 		Input struct {
 			Kafka KafkaConf
@@ -53,6 +57,9 @@ type (
 		Filters []Filter `json:",optional"`
 		Output  struct {
 			ElasticSearch ElasticSearchConf
+		}
+		DB struct{
+			Mysql MysqlConf
 		}
 	}
 
