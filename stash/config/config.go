@@ -1,9 +1,8 @@
 package config
 
 import (
-	"time"
-
 	"github.com/zeromicro/go-zero/core/service"
+	"time"
 )
 
 type (
