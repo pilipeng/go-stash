@@ -35,11 +35,11 @@ type (
 	}
 
 	PnGoodsCity struct {
-		Id         int64  `db:"id"`          // 自增主键
-		SpuId      int64  `db:"spu_id"`      // 商品sku
-		ZtCity     int64  `db:"zt_city"`     // 中台城市id
-		CityCode   int64  `db:"city_code"`   // 城市编码
-		RegionName string `db:"region_name"` // 地区名称
+		Id         int64  `db:"id" json:"id,string"`               // 自增主键
+		SpuId      int64  `db:"spu_id" json:"spu_id,string"`       // 商品sku
+		ZtCity     int64  `db:"zt_city" json:"zt_city,string"`     // 中台城市id
+		CityCode   int64  `db:"city_code" json:"city_code,string"` // 城市编码
+		RegionName string `db:"region_name" json:"region_name"`    // 地区名称
 	}
 )
 

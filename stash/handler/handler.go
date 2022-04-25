@@ -16,13 +16,15 @@ type MessageHandler struct {
 	indexer *es.Index
 	filters []filter.FilterFunc
 	processor *config.Cluster
+	dbConn *sqlx.SqlConn
 }
 
-func NewHandler(processor *config.Cluster,writer *es.Writer, indexer *es.Index) *MessageHandler {
+func NewHandler(processor *config.Cluster,writer *es.Writer, indexer *es.Index, dbConn *sqlx.SqlConn) *MessageHandler {
 	return &MessageHandler{
 		writer:  writer,
 		indexer: indexer,
 		processor: processor,
+		dbConn: dbConn,
 	}
 }
 
@@ -39,7 +41,7 @@ func (mh *MessageHandler) Consume(_, val string) error {
 		return err
 	}
 	//m["event"] = "test_fx_goods";
-	//index := mh.indexer.GetIndex(m)
+	index := mh.indexer.GetIndex(m)
 	for _, proc := range mh.filters {
 		if m = proc(m); m == nil {
 			return nil
@@ -52,9 +54,9 @@ func (mh *MessageHandler) Consume(_, val string) error {
 
 	return mh.writer.Write(index, string(bs))*/
 
-	conn := sqlx.NewMysql(mh.processor.DB.Mysql.DataSource)
+	//conn := sqlx.NewMysql(mh.processor.DB.Mysql.DataSource)
 	ctx:= context.Background()
-	lists := etl.Process(ctx,mh.processor,conn,"",[]byte(val))
+	lists := etl.Process(ctx,mh.processor,mh.dbConn,"",[]byte(val))
 	for _, row := range lists {
 		bs, err := jsoniter.Marshal(row.Item)
 		if err != nil {
@@ -64,7 +66,7 @@ func (mh *MessageHandler) Consume(_, val string) error {
 			logx.Errorf("EsIndexName is empty:%s", row.EsIndexName)
 			continue
 		}
-		index := row.EsIndexName
+		//index := row.EsIndexName
 		logx.Infof("Es index:%fs;data:%s",index,string(bs))
 		err = mh.writer.Write(index, string(bs))
 		if err != nil {

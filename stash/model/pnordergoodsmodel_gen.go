@@ -35,35 +35,35 @@ type (
 	}
 
 	PnOrderGoods struct {
-		Id            int64   `db:"id"`              // 主键
-		OrderSn       string  `db:"order_sn"`        // 子订单号
-		OrderSnSkuid  string  `db:"order_sn_skuid"`  // 子订单号+商品id
-		SupplierId    int64   `db:"supplier_id"`     // 供应商id
-		Supplier      string  `db:"supplier"`        // 供应商名称
-		GoodsId       int64   `db:"goods_id"`        // 商品表主键id
-		SkuId         int64   `db:"sku_id"`          // 商品skuId
-		GoodsName     string  `db:"goods_name"`      // 商品名
-		GoodsImg      string  `db:"goods_img"`       // 商品主图
-		ZySn          string  `db:"zy_sn"`           // 资源编码
-		SkuSn         string  `db:"sku_sn"`          // 货号
-		FinanceSn     string  `db:"finance_sn"`      // 财务编码
-		BrandId       int64   `db:"brand_id"`        // 品牌id
-		CateId        int64   `db:"cate_id"`         // 分类id
-		FirstCatId    int64   `db:"first_cat_id"`    // 商品一级分类id
-		SecondCatId   int64   `db:"second_cat_id"`   // 商品二级分类id
-		Count         int64   `db:"count"`           // 购买数量
-		ZtPrice       float64 `db:"zt_price"`        // 中台成本价
-		BasePrice     float64 `db:"base_price"`      // 品诺对接中台结算价
-		Price         float64 `db:"price"`           // 品诺售价
-		Skuattr       string  `db:"skuattr"`         // 商品属性信息，json
-		CakeTime      string  `db:"cake_time"`       // 蛋糕配送时间
-		IsVirtual     int64   `db:"is_virtual"`      // 是否虚拟商品 0:否 1：是
-		Subgoods      string  `db:"subgoods"`        // 配件信息,json
-		VirtualCode   string  `db:"virtual_code"`    // 虚拟卡号密码信息
-		Gifts         string  `db:"gifts"`           // 赠品
-		RefundStatus  int64   `db:"refund_status"`   // 退款状态，0：未退 1：部分退 2：全部退
-		RefundNum     int64   `db:"refund_num"`      // 已退数量
-		IsApplyRefund int64   `db:"is_apply_refund"` // 是否申请退款中 0：否 1：是
+		Id            int64          `db:"id" json:"id,string"`                           // 主键
+		OrderSn       string         `db:"order_sn" json:"order_sn"`                      // 子订单号
+		OrderSnSkuid  string         `db:"order_sn_skuid" json:"order_sn_skuid"`          // 子订单号+商品id
+		SupplierId    int64          `db:"supplier_id" json:"supplier_id,string"`         // 供应商id
+		Supplier      string         `db:"supplier" json:"supplier"`                      // 供应商名称
+		GoodsId       int64          `db:"goods_id" json:"goods_id,string"`               // 商品表主键id
+		SkuId         int64          `db:"sku_id" json:"sku_id,string"`                   // 商品skuId
+		GoodsName     string         `db:"goods_name" json:"goods_name"`                  // 商品名
+		GoodsImg      string         `db:"goods_img" json:"goods_img"`                    // 商品主图
+		ZySn          string         `db:"zy_sn" json:"zy_sn"`                            // 资源编码
+		SkuSn         string         `db:"sku_sn" json:"sku_sn"`                          // 货号
+		FinanceSn     string         `db:"finance_sn" json:"finance_sn"`                  // 财务编码
+		BrandId       int64          `db:"brand_id" json:"brand_id,string"`               // 品牌id
+		CateId        int64          `db:"cate_id" json:"cate_id,string"`                 // 分类id
+		FirstCatId    int64          `db:"first_cat_id" json:"first_cat_id,string"`       // 商品一级分类id
+		SecondCatId   int64          `db:"second_cat_id" json:"second_cat_id,string"`     // 商品二级分类id
+		Count         int64          `db:"count" json:"count,string"`                     // 购买数量
+		ZtPrice       float64        `db:"zt_price" json:"zt_price,string"`               // 中台成本价
+		BasePrice     float64        `db:"base_price" json:"base_price,string"`           // 品诺对接中台结算价
+		Price         float64        `db:"price" json:"price,string"`                     // 品诺售价
+		Skuattr       interface{}    `db:"skuattr" json:"skuattr,string"`                 // 商品属性信息，json
+		CakeTime      string         `db:"cake_time" json:"cake_time"`                    // 蛋糕配送时间
+		IsVirtual     int64          `db:"is_virtual" json:"is_virtual,string"`           // 是否虚拟商品 0:否 1：是
+		Subgoods      interface{}    `db:"subgoods" json:"subgoods,string"`               // 配件信息,json
+		VirtualCode   interface{} `db:"virtual_code" json:"virtual_code,string"`       // 虚拟卡号密码信息
+		Gifts         interface{}    `db:"gifts" json:"gifts,string"`                     // 赠品
+		RefundStatus  int64          `db:"refund_status" json:"refund_status,string"`     // 退款状态，0：未退 1：部分退 2：全部退
+		RefundNum     int64          `db:"refund_num" json:"refund_num,string"`           // 已退数量
+		IsApplyRefund int64          `db:"is_apply_refund" json:"is_apply_refund,string"` // 是否申请退款中 0：否 1：是
 	}
 )
 

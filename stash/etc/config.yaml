@@ -1,18 +1,17 @@
 Clusters:
 - Input:
     Kafka:
-      Name: gostash-pinuc
+      Name: gostash-by-goods
       Log:
         Mode: console   #[console,file,volume]
       Brokers:
         - "192.168.1.41:9092"
       Topics:
-        - t_fx_100006
-      Group: cg_fx_test
-#      Consumers: 16
-      Consumers: 1
-      Processors: 1
-      Conns: 1
+        - by_goods
+      Group: cg_by_goods_test
+      Conns: 3
+      Consumers: 10 #Conns * Consumers < topics
+      Processors: 60  #Conns * Consumers * 2
       Offset: "first"
   Filters:
     - Action: drop
@@ -26,20 +25,10 @@ Clusters:
           Op: and
     - Action: remove_field
       Fields:
-        - message
-        - _source
-        - _type
-        - _score
-        - _id
-        - "@version"
-        - topic
-        - index
-        - beat
-        - docker_container
-        - offset
-        - prospector
-        - source
-        - stream
+        - supplier
+        - suppliers_name_real
+        - goods_stock
+        - region_name
     - Action: transfer
       Field: message
       Target: data
@@ -47,8 +36,8 @@ Clusters:
     ElasticSearch:
       Hosts:
         - "http://192.168.1.41:9200"
-     # Index: "{.event}-{{yyyy-MM-dd}}"
-      Index: "{.event}"  #未用
+      Index: "got_by_goods" #{.event}-{{yyyy-MM-dd}}
+      #Index: "{.event}"  #未用
       Username: "elastic"
       Password: "bCd2pBx6OcY5elfnj7aT"
       MaxChunkBytes: 5242880
@@ -56,8 +45,64 @@ Clusters:
       Compress: false
       TimeZone: UTC
   DB:
-    MysqlConf:
-      DataSource: "root:openthe*1*db@tcp(192.168.1.87:3306)/db_t_fenxiao?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
+    Mysql:
+      DataSource: "root:openthe*1*db@tcp(192.168.1.87:3306)/db_t_boying?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
+
+
+- Input:
+    Kafka:
+      Name: gostash-by-order
+      Log:
+        Mode: console   #[console,file,volume]
+      Brokers:
+        - "192.168.1.41:9092"
+      Topics:
+        - by_order
+      Group: cg_by_order_test
+      Conns: 3
+      Consumers: 10 #Conns * Consumers < topics
+      Processors: 60  #Conns * Consumers * 2
+      Offset: "first"
+  Filters:
+    - Action: drop
+      Conditions:
+        - Key: k8s_container_name
+          Value: "-rpc"
+          Type: contains
+        - Key: level
+          Value: info
+          Type: match
+          Op: and
+    - Action: remove_field
+      Fields:
+        - card_response
+        - remark
+        - order_snapshot
+        - order_extend_snapshot
+        - receiver_snapshot
+        - zt_response
+        - wx_response
+        - express
+        - company_goods_id
+        - price_difference
+        - price_difference_back
+    - Action: transfer
+      Field: message
+      Target: data
+  Output:
+    ElasticSearch:
+      Hosts:
+        - "http://192.168.1.41:9200"
+      Index: "got_by_order_{{yyyyMM}}"
+      Username: "elastic"
+      Password: "bCd2pBx6OcY5elfnj7aT"
+      MaxChunkBytes: 5242880
+      GracePeriod: 10s
+      Compress: false
+      TimeZone: UTC
+  DB:
+    Mysql:
+      DataSource: "root:openthe*1*db@tcp(192.168.1.87:3306)/db_t_boying?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai"
 
 
 

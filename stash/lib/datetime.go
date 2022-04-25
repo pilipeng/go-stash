@@ -2,7 +2,9 @@
 
 package lib
 
-import (
+import "time"
+
+/*import (
 	"fmt"
 	"time"
 )
@@ -45,4 +47,27 @@ func (d *Datetime) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	return nil
+}*/
+type Datetime time.Time
+
+const (
+	timeFormart = "2006-01-02 15:04:05"
+)
+
+func (t *Datetime) UnmarshalJSON(data []byte) (err error) {
+	now, err := time.ParseInLocation(`"`+timeFormart+`"`, string(data), time.Local)
+	*t = Datetime(now)
+	return
+}
+
+func (t Datetime) MarshalJSON() ([]byte, error) {
+	b := make([]byte, 0, len(timeFormart)+2)
+	b = append(b, '"')
+	b = time.Time(t).AppendFormat(b, timeFormart)
+	b = append(b, '"')
+	return b, nil
+}
+
+func (t Datetime) String() string {
+	return time.Time(t).Format(timeFormart)
 }

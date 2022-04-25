@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/kevwan/go-stash/stash/lib"
 	"github.com/kevwan/go-stash/stash/model"
+	"github.com/zeromicro/go-zero/core/logx"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 
 	"regexp"
@@ -53,7 +54,7 @@ func orderGoodsInfo(ctx context.Context,conn sqlx.SqlConn, orderInfo model.PnOrd
 
 			var orderSnapshot model.OrderSnapshot
 			if err := json.Unmarshal(orderSnapshotBytes, &orderSnapshot); err != nil {
-				panic(err)
+				logx.Must(err)
 			}
 			lib.StructColumn(&goodsNameList, orderSnapshot, "GoodsName", "")
 		}
@@ -62,7 +63,7 @@ func orderGoodsInfo(ctx context.Context,conn sqlx.SqlConn, orderInfo model.PnOrd
 	if len(orderSnapshotStr) == 0 {
 		goodsList, err := model.NewPnOrderGoodsModel(conn).FindAll(ctx,orderInfo.OrderSn)
 		if err != nil {
-			panic(err)
+			logx.Must(err)
 		}
 		orderSnap, _ = json.Marshal(goodsList)
 		lib.StructColumn(&goodsNameList, *goodsList, "goods_name", "")

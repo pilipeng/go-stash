@@ -71,7 +71,8 @@ func GoodsFormat(ctx context.Context,conn sqlx.SqlConn, tableData model.PnGoods,
 func GoodsCityCodes(ctx context.Context,conn sqlx.SqlConn, goodsSpuIds []int64) map[int64][]int64 {
 	list, err := model.NewPnGoodsCityModel(conn).FindAllBySpuIds(ctx,goodsSpuIds)
 	if err != nil {
-		panic(err)
+		//panic(err)
+		logx.Must(err)
 	}
 
 	spuCityCodes:=make(map[int64][]int64, len(goodsSpuIds))

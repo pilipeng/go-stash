@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"time"
 
 	"github.com/kevwan/go-stash/stash/config"
@@ -69,7 +70,10 @@ func main() {
 			loc = time.Local
 		}
 		indexer := es.NewIndex(client, processor.Output.ElasticSearch.Index, loc)
-		handle := handler.NewHandler(&processor, writer, indexer)
+
+		dbConn := sqlx.NewMysql(processor.DB.Mysql.DataSource)
+
+		handle := handler.NewHandler(&processor, writer, indexer,&dbConn)
 		handle.AddFilters(filters...)
 		handle.AddFilters(filter.AddUriFieldFilter("url", "uri"))
 		for _, k := range toKqConf(processor.Input.Kafka) {
