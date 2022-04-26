@@ -19,6 +19,7 @@ type (
 	valueWithIndex struct {
 		index string
 		val   string
+		id 	  string
 	}
 )
 
@@ -41,10 +42,11 @@ func NewWriter(c config.ElasticSearchConf) (*Writer, error) {
 	return &writer, nil
 }
 
-func (w *Writer) Write(index, val string) error {
+func (w *Writer) Write(index, id, val string) error {
 	return w.inserter.Add(valueWithIndex{
 		index: index,
 		val:   val,
+		id:	id,
 	}, len(val))
 }
 
@@ -53,6 +55,9 @@ func (w *Writer) execute(vals []interface{}) {
 	for _, val := range vals {
 		pair := val.(valueWithIndex)
 		req := elastic.NewBulkIndexRequest().Index(pair.index).Type(w.docType).Doc(pair.val)
+		if len(pair.id)>0{
+			req.Id(pair.id)
+		}
 		bulk.Add(req)
 	}
 	resp, err := bulk.Do(context.Background())

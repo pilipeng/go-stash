@@ -35,47 +35,47 @@ type (
 	}
 
 	PnGoods struct {
-		GoodsId           int64   `db:"goods_id"`            // 主键、自增
-		SpuId             int64   `db:"spu_id"`              // 商品spu_id
-		SkuId             int64   `db:"sku_id"`              // 商品sku_id
-		ZySn              string  `db:"zy_sn"`               // 资源编码
-		SkuSn             string  `db:"sku_sn"`              // 商品货号
-		FinanceSn         string  `db:"finance_sn"`          // 财务编码
-		GoodsName         string  `db:"goods_name"`          // 商品名称
-		GoodsImg          string  `db:"goods_img"`           // 商品图片
-		ZtPrice           float64 `db:"zt_price"`            // 中台成本价
-		GoodsPrice        float64 `db:"goods_price"`         // 商品价格
-		GoodsPriceSell    float64 `db:"goods_price_sell"`    // 商品售卖价格
-		SetPriceType      int64   `db:"set_price_type"`      // 售价修改类型：1固定价格 2浮动倍率
-		SetPriceRate      float64 `db:"set_price_rate"`      // 浮动倍率
-		CurrCatId         int64   `db:"curr_cat_id"`         // 商品分类
-		CatId             int64   `db:"cat_id"`              // 商品一级分类id
-		SecondCatId       int64   `db:"second_cat_id"`       // 二级分类id
-		ThirdCatId        int64   `db:"third_cat_id"`        // 三级分类id
-		ZhongtaiCat       int64   `db:"zhongtai_cat"`        // 中台分类
-		BrandId           int64   `db:"brand_id"`            // 商品品牌
-		ZhongtaiBrand     int64   `db:"zhongtai_brand"`      // 中台品牌id
-		UpdateTime        int64   `db:"update_time"`         // 修改时间
-		AddTime           int64   `db:"add_time"`            // 添加时间
-		IsGift            int64   `db:"is_gift"`             // 是否为礼包商品
-		SupplierId        int64   `db:"supplier_id"`         // 供货商id
-		Supplier          string  `db:"supplier"`            // 供货商别名
-		SuppliersNameReal string  `db:"suppliers_name_real"` // 供货商 真实名称
-		SaleCount         int64   `db:"sale_count"`          // 销量
-		CompleteComDegree int64   `db:"complete_com_degree"` // 企业专区商品上下架
-		OnSale            int64   `db:"on_sale"`             // 上下架状态 0：下架 1：上架
-		IsVirtual         int64   `db:"is_virtual"`          // 是否虚拟卡 0：否 1：是
-		IsMinPrice        int64   `db:"is_min_price"`        // 是否该spu下价格最低商品 0：否 1：是
-		MinSaleCount      int64   `db:"min_sale_count"`      // 起售数量
-		GoodsRestrictHour int64   `db:"goods_restrict_hour"` // 限制购买时间
-		GoodsRestrictNum  int64   `db:"goods_restrict_num"`  // 限制购买数量
-		GoodsStock        string  `db:"goods_stock"`         // 礼包库存
-		IsShow            int64   `db:"is_show"`             // 商品是否显示 0：否 1：是
-		SortTag           int64   `db:"sort_tag"`            // 商品列表搜索排序权重，值越高权重越大，商品越靠前
-		IsShowSellout     int64   `db:"is_show_sellout"`     // 无货是否显示补货中 0：否 1：是
-		IsRecommond       int64   `db:"is_recommond"`        // 是否推荐 0：否 1：是
-		IsNew             int64   `db:"is_new"`              // 是否新品 0：否 1：是
-		IsHot             int64   `db:"is_hot"`              // 是否热卖 0：否 1：是
+		GoodsId           int64   `db:"goods_id" json:"goods_id,string"`                       // 主键、自增
+		SpuId             int64   `db:"spu_id" json:"spu_id,string"`                           // 商品spu_id
+		SkuId             int64   `db:"sku_id" json:"sku_id,string"`                           // 商品sku_id
+		ZySn              string  `db:"zy_sn" json:"zy_sn"`                                    // 资源编码
+		SkuSn             string  `db:"sku_sn" json:"sku_sn"`                                  // 商品货号
+		FinanceSn         string  `db:"finance_sn" json:"finance_sn"`                          // 财务编码
+		GoodsName         string  `db:"goods_name" json:"goods_name"`                          // 商品名称
+		GoodsImg          string  `db:"goods_img" json:"goods_img"`                            // 商品图片
+		ZtPrice           float64 `db:"zt_price" json:"zt_price,string"`                       // 中台成本价
+		GoodsPrice        float64 `db:"goods_price" json:"goods_price,string"`                 // 商品价格
+		GoodsPriceSell    float64 `db:"goods_price_sell" json:"goods_price_sell,string"`       // 商品售卖价格
+		//SetPriceType      int64   `db:"set_price_type" json:"set_price_type,string"`           // 售价修改类型：1固定价格 2浮动倍率
+		//SetPriceRate      float64 `db:"set_price_rate" json:"set_price_rate,string"`           // 浮动倍率
+		CurrCatId         int64   `db:"curr_cat_id" json:"curr_cat_id,string"`                 // 商品分类
+		CatId             int64   `db:"cat_id" json:"cat_id,string"`                           // 商品一级分类id
+		SecondCatId       int64   `db:"second_cat_id" json:"second_cat_id,string"`             // 二级分类id
+		ThirdCatId        int64   `db:"third_cat_id"  json:"third_cat_id,string"`              // 三级分类id
+		ZhongtaiCat       int64   `db:"zhongtai_cat" json:"zhongtai_cat,string"`               // 中台分类
+		BrandId           int64   `db:"brand_id" json:"brand_id,string"`                       // 商品品牌
+		ZhongtaiBrand     int64   `db:"zhongtai_brand" json:"zhongtai_brand,string"`           // 中台品牌id
+		UpdateTime        int64   `db:"update_time" json:"update_time,string"`                 // 修改时间
+		AddTime           int64   `db:"add_time" json:"add_time,string"`                       // 添加时间
+		IsGift            int64   `db:"is_gift" json:"is_gift,string"`                         // 是否为礼包商品
+		SupplierId        int64   `db:"supplier_id" json:"supplier_id,string"`                 // 供货商id
+		Supplier          string  `db:"supplier" json:"supplier"`                              // 供货商别名
+		SuppliersNameReal string  `db:"suppliers_name_real" json:"suppliers_name_real"`        // 供货商 真实名称
+		SaleCount         int64   `db:"sale_count" json:"sale_count,string"`                   // 销量
+		CompleteComDegree int64   `db:"complete_com_degree" json:"complete_com_degree,string"` // 企业专区商品上下架
+		OnSale            int64   `db:"on_sale" json:"on_sale,string"`                         // 上下架状态 0：下架 1：上架
+		IsVirtual         int64   `db:"is_virtual" json:"is_virtual,string"`                   // 是否虚拟卡 0：否 1：是
+		IsMinPrice        int64   `db:"is_min_price" json:"is_min_price,string"`               // 是否该spu下价格最低商品 0：否 1：是
+		MinSaleCount      int64   `db:"min_sale_count" json:"min_sale_count,string"`           // 起售数量
+		GoodsRestrictHour int64   `db:"goods_restrict_hour" json:"goods_restrict_hour,string"` // 限制购买时间
+		GoodsRestrictNum  int64   `db:"goods_restrict_num" json:"goods_restrict_num,string"`   // 限制购买数量
+		GoodsStock        string  `db:"goods_stock" json:"goods_stock"`                        // 礼包库存
+		IsShow            int64   `db:"is_show" json:"is_show,string"`                         // 商品是否显示 0：否 1：是
+		SortTag           int64   `db:"sort_tag" json:"sort_tag,string"`                       // 商品列表搜索排序权重，值越高权重越大，商品越靠前
+		IsShowSellout     int64   `db:"is_show_sellout" json:"is_show_sellout,string"`         // 无货是否显示补货中 0：否 1：是
+		IsRecommond       int64   `db:"is_recommond" json:"is_recommond,string"`               // 是否推荐 0：否 1：是
+		IsNew             int64   `db:"is_new" json:"is_new,string"`                           // 是否新品 0：否 1：是
+		IsHot             int64   `db:"is_hot" json:"is_hot,string"`                           // 是否热卖 0：否 1：是
 		VirtualSkuType    int64   `db:"virtual_sku_type"`    // 虚拟电子券类型 0：普通电子券 1：嘉华 2：瑞幸 3：闹闹猴
 	}
 )
@@ -88,8 +88,8 @@ func newPnGoodsModel(conn sqlx.SqlConn) *defaultPnGoodsModel {
 }
 
 func (m *defaultPnGoodsModel) Insert(ctx context.Context, data *PnGoods) (sql.Result, error) {
-	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, pnGoodsRowsExpectAutoSet)
-	ret, err := m.conn.ExecCtx(ctx, query, data.SpuId, data.SkuId, data.ZySn, data.SkuSn, data.FinanceSn, data.GoodsName, data.GoodsImg, data.ZtPrice, data.GoodsPrice, data.GoodsPriceSell, data.SetPriceType, data.SetPriceRate, data.CurrCatId, data.CatId, data.SecondCatId, data.ThirdCatId, data.ZhongtaiCat, data.BrandId, data.ZhongtaiBrand, data.AddTime, data.IsGift, data.SupplierId, data.Supplier, data.SuppliersNameReal, data.SaleCount, data.CompleteComDegree, data.OnSale, data.IsVirtual, data.IsMinPrice, data.MinSaleCount, data.GoodsRestrictHour, data.GoodsRestrictNum, data.GoodsStock, data.IsShow, data.SortTag, data.IsShowSellout, data.IsRecommond, data.IsNew, data.IsHot, data.VirtualSkuType)
+	query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, pnGoodsRowsExpectAutoSet)
+	ret, err := m.conn.ExecCtx(ctx, query, data.SpuId, data.SkuId, data.ZySn, data.SkuSn, data.FinanceSn, data.GoodsName, data.GoodsImg, data.ZtPrice, data.GoodsPrice, data.GoodsPriceSell, data.CurrCatId, data.CatId, data.SecondCatId, data.ThirdCatId, data.ZhongtaiCat, data.BrandId, data.ZhongtaiBrand, data.AddTime, data.IsGift, data.SupplierId, data.Supplier, data.SuppliersNameReal, data.SaleCount, data.CompleteComDegree, data.OnSale, data.IsVirtual, data.IsMinPrice, data.MinSaleCount, data.GoodsRestrictHour, data.GoodsRestrictNum, data.GoodsStock, data.IsShow, data.SortTag, data.IsShowSellout, data.IsRecommond, data.IsNew, data.IsHot, data.VirtualSkuType)
 	return ret, err
 }
 
@@ -109,7 +109,7 @@ func (m *defaultPnGoodsModel) FindOne(ctx context.Context, goodsId int64) (*PnGo
 
 func (m *defaultPnGoodsModel) Update(ctx context.Context, data *PnGoods) error {
 	query := fmt.Sprintf("update %s set %s where `goods_id` = ?", m.table, pnGoodsRowsWithPlaceHolder)
-	_, err := m.conn.ExecCtx(ctx, query, data.SpuId, data.SkuId, data.ZySn, data.SkuSn, data.FinanceSn, data.GoodsName, data.GoodsImg, data.ZtPrice, data.GoodsPrice, data.GoodsPriceSell, data.SetPriceType, data.SetPriceRate, data.CurrCatId, data.CatId, data.SecondCatId, data.ThirdCatId, data.ZhongtaiCat, data.BrandId, data.ZhongtaiBrand, data.AddTime, data.IsGift, data.SupplierId, data.Supplier, data.SuppliersNameReal, data.SaleCount, data.CompleteComDegree, data.OnSale, data.IsVirtual, data.IsMinPrice, data.MinSaleCount, data.GoodsRestrictHour, data.GoodsRestrictNum, data.GoodsStock, data.IsShow, data.SortTag, data.IsShowSellout, data.IsRecommond, data.IsNew, data.IsHot, data.VirtualSkuType, data.GoodsId)
+	_, err := m.conn.ExecCtx(ctx, query, data.SpuId, data.SkuId, data.ZySn, data.SkuSn, data.FinanceSn, data.GoodsName, data.GoodsImg, data.ZtPrice, data.GoodsPrice, data.GoodsPriceSell, data.CurrCatId, data.CatId, data.SecondCatId, data.ThirdCatId, data.ZhongtaiCat, data.BrandId, data.ZhongtaiBrand, data.AddTime, data.IsGift, data.SupplierId, data.Supplier, data.SuppliersNameReal, data.SaleCount, data.CompleteComDegree, data.OnSale, data.IsVirtual, data.IsMinPrice, data.MinSaleCount, data.GoodsRestrictHour, data.GoodsRestrictNum, data.GoodsStock, data.IsShow, data.SortTag, data.IsShowSellout, data.IsRecommond, data.IsNew, data.IsHot, data.VirtualSkuType, data.GoodsId)
 	return err
 }
 

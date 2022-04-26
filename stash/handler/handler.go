@@ -35,12 +35,10 @@ func (mh *MessageHandler) AddFilters(filters ...filter.FilterFunc) {
 }
 
 func (mh *MessageHandler) Consume(_, val string) error {
-	//logx.Info(val)
 	var m map[string]interface{}
 	if err := jsoniter.Unmarshal([]byte(val), &m); err != nil {
 		return err
 	}
-	//m["event"] = "test_fx_goods";
 	index := mh.indexer.GetIndex(m)
 	for _, proc := range mh.filters {
 		if m = proc(m); m == nil {
@@ -51,13 +49,12 @@ func (mh *MessageHandler) Consume(_, val string) error {
 	if err != nil {
 		return err
 	}
-
 	return mh.writer.Write(index, string(bs))*/
 
-	//conn := sqlx.NewMysql(mh.processor.DB.Mysql.DataSource)
+
 	ctx:= context.Background()
 	lists := etl.Process(ctx,mh.processor,mh.dbConn,"",[]byte(val))
-	for _, row := range lists {
+	for indexKey, row := range lists {
 		bs, err := jsoniter.Marshal(row.Item)
 		if err != nil {
 			return err
@@ -68,7 +65,7 @@ func (mh *MessageHandler) Consume(_, val string) error {
 		}
 		//index := row.EsIndexName
 		logx.Infof("Es index:%fs;data:%s",index,string(bs))
-		err = mh.writer.Write(index, string(bs))
+		err = mh.writer.Write(index,indexKey, string(bs))
 		if err != nil {
 			return err
 		}
