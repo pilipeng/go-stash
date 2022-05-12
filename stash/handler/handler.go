@@ -39,7 +39,7 @@ func (mh *MessageHandler) Consume(_, val string) error {
 	if err := jsoniter.Unmarshal([]byte(val), &m); err != nil {
 		return err
 	}
-	index := mh.indexer.GetIndex(m)
+	//index := mh.indexer.GetIndex(m)
 	for _, proc := range mh.filters {
 		if m = proc(m); m == nil {
 			return nil
@@ -52,8 +52,9 @@ func (mh *MessageHandler) Consume(_, val string) error {
 	return mh.writer.Write(index, string(bs))*/
 
 
+	//自定义数据解析
 	ctx:= context.Background()
-	lists := etl.Process(ctx,mh.processor,mh.dbConn,"",[]byte(val))
+	lists := etl.Process(ctx,mh.processor,mh.dbConn,[]byte(val))
 	for indexKey, row := range lists {
 		bs, err := jsoniter.Marshal(row.Item)
 		if err != nil {
@@ -63,8 +64,8 @@ func (mh *MessageHandler) Consume(_, val string) error {
 			logx.Errorf("EsIndexName is empty:%s", row.EsIndexName)
 			continue
 		}
-		//index := row.EsIndexName
-		logx.Infof("Es index:%fs;data:%s",index,string(bs))
+		index := row.EsIndexName
+		logx.Infof("Es index:%fs;_id:%s",index,indexKey)
 		err = mh.writer.Write(index,indexKey, string(bs))
 		if err != nil {
 			return err

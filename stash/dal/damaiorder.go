@@ -9,8 +9,9 @@ import (
 )
 
 func DamaiOrderFormat(ctx context.Context, conn sqlx.SqlConn, order model.PnDamaiOrder) map[string]interface{} {
+	//esMap:=make(map[string]interface{})
 	esMap:=make(map[string]interface{})
-	esMap["order_sn"]=order.OrderSn
+	esMap["order_sn"]= order.OrderSn
 	esMap["user_id"]=order.OrderId
 	esMap["user_name"]=order.UserName
 	esMap["order_status"]=order.OrderStatus

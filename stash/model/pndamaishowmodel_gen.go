@@ -36,51 +36,51 @@ type (
 	}
 
 	PnDamaiShow struct {
-		Id                     int64          `db:"id"`
-		ProjectName            string         `db:"project_name"`             // 门票名称
-		ClassifyName           string         `db:"classify_name"`            // 一级分类名称
-		CityId                 int64          `db:"city_id"`                  // 城市id
-		CityName               string         `db:"city_name"`                // 城市名称
-		IsHasSeat              int64          `db:"is_has_seat"`              // 是否有座： 0=无座 1=有座
-		ProjectId              int64          `db:"project_id"`               // 项目ID
-		ProjectStatus          int64          `db:"project_status"`           // 项目状态，0：创建中 10：已创建 20：待销售 30：销售中 40：项目取消 50：项目结束 60:定时开售，一般30之前的状态不会透出给渠道
-		TraderId               int64          `db:"trader_id"`                // 主办方ID
-		TraderName             string         `db:"trader_name"`              // 主办方名称
-		VenueId                int64          `db:"venue_id"`                 // 场馆id
-		Lat                    string         `db:"lat"`                      // 纬度
-		Lng                    string         `db:"lng"`                      // 经度
-		VenueName              string         `db:"venue_name"`               // 场馆名称
-		VenueAddress           string         `db:"venue_address"`            // 场馆地址
-		IsTest                 int64          `db:"is_test"`                  // 是否测试项目 0-正式项目 1-测试项目
-		ClassifyId             int64          `db:"classify_id"`              // 一级分类id
-		ThirdClassifyName      string         `db:"third_classify_name"`      // 二级分类名称
-		ThirdClassifyId        int64          `db:"third_classify_id"`        // 二级分类id
-		OnSale                 int64          `db:"on_sale"`                  // 1:上架：0：下架
-		IsSale                 int64          `db:"is_sale"`                  // 1:热销 0：普通
-		AddTime                string         `db:"add_time"`                 // 添加时间
-		DeliveryTypes          string         `db:"delivery_types"`           // 取票类型1-无纸化,2-快递票,3-自助换票,4-门店自取。1、3属于电子票换票方式,2、4属于纸质票取票方式
-		DepositInfo            string         `db:"deposit_info"`             // 寄存说明
-		PurchaseLimitationOnce int64          `db:"purchase_limitation_once"` // 项目单次限购数量
-		RealNameNotice         string         `db:"real_name_notice"`         // 实名制购票
-		ShowDetail             lib.JsonNullString `db:"show_detail"`              // 演出详情
-		ShowEndTime            string         `db:"show_end_time"`            // 演出销售结束时间
-		ShowStartTime          string         `db:"show_start_time"`          // 演出开售时间
-		ShowTime               string         `db:"show_time"`                // 演出时间
-		ChildrenNotice         lib.JsonNullString `db:"children_notice"`          // 儿童购票说明
-		EntranceNotice         lib.JsonNullString `db:"entrance_notice"`          // 入场说明
-		LimitNotice            string         `db:"limit_notice"`             // 	限购说明
-		PerformTimeDetailList  lib.JsonNullString `db:"perform_time_detail_list"` // 演出时间说明
-		PolicyOfReturn         lib.JsonNullString `db:"policy_of_return"`         // 退换政策
-		ProhibitedItems        string         `db:"prohibited_items"`         // 禁止携带物品说明
-		ClassifyCode           int64          `db:"classify_code"`            // 分类id
-		ShowPic                string         `db:"show_pic"`                 // 演出海报图
-		ChoiceSeatNotice       string         `db:"choice_seat_notice"`       // 是否支持选座
-		EticketNotice          string         `db:"eticket_notice"`           // 	通过票夹中的二维码或身份证，可以直接验票入场（具体以下单后票夹信息为准）
-		SelfGetTicketNotice    string         `db:"self_get_ticket_notice"`   // 	需要您在指定的取票地点取票，请在确认订单的时候仔细确认取票地址（具体以下单后票夹信息为准）
-		Artists                lib.JsonNullString `db:"artists"`                  // 艺人JSON
-		IpCard                 lib.JsonNullString `db:"ip_card"`                  // 品牌JSON
-		PostCity               string         `db:"post_city"`                // 发货城市
-		PickupAddressList      lib.JsonNullString `db:"pickup_address_list"`      // 上门自取地址
+		Id                     int64              `db:"id" json:"id,string"`
+		ProjectName            string             `db:"project_name" json:"project_name,omitempty"`                         // 门票名称
+		ClassifyName           string             `db:"classify_name" json:"classify_name,omitempty"`                       // 一级分类名称
+		CityId                 int64              `db:"city_id" json:"city_id,string"`                                   // 城市id
+		CityName               string             `db:"city_name" json:"city_name,omitempty"`                               // 城市名称
+		IsHasSeat              int64              `db:"is_has_seat" json:"is_has_seat,string"`                           // 是否有座： 0=无座 1=有座
+		ProjectId              int64              `db:"project_id" json:"project_id,string"`                             // 项目ID
+		ProjectStatus          int64              `db:"project_status" json:"project_status,string"`                     // 项目状态，0：创建中 10：已创建 20：待销售 30：销售中 40：项目取消 50：项目结束 60:定时开售，一般30之前的状态不会透出给渠道
+		TraderId               int64              `db:"trader_id" json:"trader_id,string"`                               // 主办方ID
+		TraderName             string             `db:"trader_name" json:"trader_name,omitempty"`                           // 主办方名称
+		VenueId                int64              `db:"venue_id" json:"venue_id,string"`                                 // 场馆id
+		Lat                    string             `db:"lat" json:"lat,omitempty"`                                           // 纬度
+		Lng                    string             `db:"lng" json:"lng,omitempty"`                                           // 经度
+		VenueName              string             `db:"venue_name" json:"venue_name,omitempty"`                             // 场馆名称
+		VenueAddress           string             `db:"venue_address" json:"venue_address,omitempty"`                       // 场馆地址
+		IsTest                 int64              `db:"is_test" json:"is_test,string"`                                   // 是否测试项目 0-正式项目 1-测试项目
+		ClassifyId             int64              `db:"classify_id" json:"classify_id,string"`                           // 一级分类id
+		ThirdClassifyName      string             `db:"third_classify_name" json:"third_classify_name,omitempty"`           // 二级分类名称
+		ThirdClassifyId        int64              `db:"third_classify_id" json:"third_classify_id,string"`               // 二级分类id
+		OnSale                 int64              `db:"on_sale" json:"on_sale,string"`                                   // 1:上架：0：下架
+		IsSale                 int64              `db:"is_sale" json:"is_sale,string"`                                   // 1:热销 0：普通
+		AddTime                string             `db:"add_time" json:"add_time,omitempty"`                                 // 添加时间
+		DeliveryTypes          string             `db:"delivery_types" json:"delivery_types,omitempty"`                     // 取票类型1-无纸化,2-快递票,3-自助换票,4-门店自取。1、3属于电子票换票方式,2、4属于纸质票取票方式
+		DepositInfo            string             `db:"deposit_info" json:"deposit_info,omitempty"`                         // 寄存说明
+		PurchaseLimitationOnce int64              `db:"purchase_limitation_once" json:"purchase_limitation_once,string"` // 项目单次限购数量
+		RealNameNotice         string             `db:"real_name_notice" json:"real_name_notice,omitempty"`                 // 实名制购票
+		ShowDetail             lib.JsonNullString `db:"show_detail" json:"show_detail"`                                     // 演出详情
+		ShowEndTime            string             `db:"show_end_time" json:"show_end_time,omitempty"`                       // 演出销售结束时间
+		ShowStartTime          string             `db:"show_start_time" json:"show_start_time,omitempty"`                   // 演出开售时间
+		ShowTime               string             `db:"show_time" json:"show_time,omitempty"`                               // 演出时间
+		ChildrenNotice         lib.JsonNullString `db:"children_notice" json:"children_notice"`                             // 儿童购票说明
+		EntranceNotice         lib.JsonNullString `db:"entrance_notice" json:"entrance_notice"`                             // 入场说明
+		LimitNotice            string             `db:"limit_notice" json:"limit_notice,omitempty"`                         // 	限购说明
+		PerformTimeDetailList  lib.JsonNullString `db:"perform_time_detail_list" json:"perform_time_detail_list"`           // 演出时间说明
+		PolicyOfReturn         lib.JsonNullString `db:"policy_of_return" json:"policy_of_return"`                           // 退换政策
+		ProhibitedItems        string             `db:"prohibited_items" json:"prohibited_items,omitempty"`                 // 禁止携带物品说明
+		ClassifyCode           int64              `db:"classify_code" json:"classify_code,string"`                       // 分类id
+		ShowPic                string             `db:"show_pic" json:"show_pic,omitempty"`                                 // 演出海报图
+		ChoiceSeatNotice       string             `db:"choice_seat_notice" json:"choice_seat_notice,omitempty"`             // 是否支持选座
+		EticketNotice          string             `db:"eticket_notice" json:"eticket_notice,omitempty"`                     // 	通过票夹中的二维码或身份证，可以直接验票入场（具体以下单后票夹信息为准）
+		SelfGetTicketNotice    string             `db:"self_get_ticket_notice" json:"self_get_ticket_notice,omitempty"`     // 	需要您在指定的取票地点取票，请在确认订单的时候仔细确认取票地址（具体以下单后票夹信息为准）
+		Artists                lib.JsonNullString `db:"artists" json:"artists"`                                             // 艺人JSON
+		IpCard                 lib.JsonNullString `db:"ip_card" json:"ip_card"`                                             // 品牌JSON
+		PostCity               string             `db:"post_city" json:"post_city,omitempty"`                               // 发货城市
+		PickupAddressList      lib.JsonNullString `db:"pickup_address_list" json:"pickup_address_list"`                     // 上门自取地址
 	}
 )
 

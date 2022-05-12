@@ -36,43 +36,43 @@ type (
 	}
 
 	PnMCinema struct {
-		Id             int64     `db:"id"`
-		CinemaName     string    `db:"cinemaName"`      // 影院名称
-		CityName       string    `db:"cityName"`        // 城市名称
-		CinemaId       int64     `db:"cinemaId"`        // 影院id
-		SeatFlag       int64     `db:"seatFlag"`        // 是否支持订座票  0：不支持 1：支持
-		Region         string    `db:"region"`          // 所在区
-		Logo           string    `db:"logo"`            // 影院Logo图片
-		Phone          string    `db:"phone"`           // 影院联系电话
-		BusPath        string    `db:"busPath"`         // 公交线路
-		CityId         int64     `db:"cityId"`          // 城市id
-		SeatCounts     string    `db:"seatCounts"`      // 影院每个厅含座位数，多个用-分隔；未知数量为0
-		HallId         string    `db:"hallId"`          // 影院所含厅ID列表,多个厅用-分隔
-		HallNames      string    `db:"hallNames"`       // 影院厅名称列表，多个用-分隔
-		AtmPosition    string    `db:"atmPosition"`     // 取票机
-		BusinessCircle string    `db:"businessCircle"`  // 商圈
-		Subway         string    `db:"subway"`          // 地铁
-		Address        string    `db:"address"`         // 影院地址
-		TicketFlag     int64     `db:"ticketFlag"`      // 是否支持电子票  0：不支持 1：支持
-		Longitude      string    `db:"longitude"`       // 径度
-		Latitude       string    `db:"latitude"`        // 纬度
-		Vipflags       string    `db:"vipflags"`        // 影院所在厅是否为VIP厅，多个用-分隔，0表示非VIP，1为vip
-		UpdateTime     lib.Datetime `db:"update_time"`     // 更新时间
-		Are2DPrice     string    `db:"are2D_price"`     // 2D抵扣价
-		Are3DPrice     string    `db:"are3D_price"`     // 3D抵扣价
-		OnlineConsum   int64     `db:"online_consum"`   // 线上是否支持购买
-		ProvinceSearch int64     `db:"province_search"` // 省id  卡查询使用
-		CitySearch     int64     `db:"city_search"`     // 市id  卡查询使用
-		AreaSearch     int64     `db:"area_search"`     // 区id   卡查询
-		Glasses        int64     `db:"glasses"`         // 是否提供3d眼镜
-		ByCityId       int64     `db:"by_cityId"`       // 博影城市id
-		OnlineShow     int64     `db:"online_show"`     // 线上是否显示
-		PriceMultiple  string    `db:"price_multiple"`  // 此影院下排期倍数
-		PriceBase      string    `db:"price_base"`      // 此影院下排期基数
-		TimeCinemaId   int64     `db:"time_cinema_id"`
-		Code           int64     `db:"code"`         // 标识
-		LocalCinema    int64     `db:"local_cinema"` // 匹配影院id
-		ZzCode         string    `db:"zz_code"`      // 专资编码
+		Id             int64        `db:"id" json:"id,string"`
+		CinemaName     string       `db:"cinemaName" json:"cinemaName,omitempty"`          // 影院名称
+		CityName       string       `db:"cityName" json:"cityName,omitempty"`              // 城市名称
+		CinemaId       int64        `db:"cinemaId" json:"cinemaId,string"`              // 影院id
+		SeatFlag       int64        `db:"seatFlag" json:"seatFlag,string"`              // 是否支持订座票  0：不支持 1：支持
+		Region         string       `db:"region" json:"region,omitempty"`                   // 所在区
+		Logo           string       `db:"logo" json:"logo,omitempty"`                       // 影院Logo图片
+		Phone          string       `db:"phone" json:"phone,omitempty"`                     // 影院联系电话
+		BusPath        string       `db:"busPath" json:"busPath,omitempty"`                // 公交线路
+		CityId         int64        `db:"cityId" json:"cityId,string"`                  // 城市id
+		SeatCounts     string       `db:"seatCounts" json:"seatCounts,omitempty"`          // 影院每个厅含座位数，多个用-分隔；未知数量为0
+		HallId         string       `db:"hallId" json:"hallId,omitempty"`                  // 影院所含厅ID列表,多个厅用-分隔
+		HallNames      string       `db:"hallNames" json:"hallNames,omitempty"`            // 影院厅名称列表，多个用-分隔
+		AtmPosition    string       `db:"atmPosition" json:"atmPosition,omitempty"`        // 取票机
+		BusinessCircle string       `db:"businessCircle" json:"businessCircle,omitempty"`  // 商圈
+		Subway         string       `db:"subway" json:"subway,omitempty"`                   // 地铁
+		Address        string       `db:"address" json:"address,omitempty"`                 // 影院地址
+		TicketFlag     int64        `db:"ticketFlag" json:"ticketFlag,string"`          // 是否支持电子票  0：不支持 1：支持
+		Longitude      string       `db:"longitude" json:"longitude,omitempty"`             // 径度
+		Latitude       string       `db:"latitude" json:"latitude,omitempty"`               // 纬度
+		Vipflags       string       `db:"vipflags" json:"vipflags,omitempty"`               // 影院所在厅是否为VIP厅，多个用-分隔，0表示非VIP，1为vip
+		UpdateTime     lib.Datetime `db:"update_time" json:"update_time"`                   // 更新时间
+		Are2DPrice     string       `db:"are2D_price" json:"are2D_price,omitempty"`       // 2D抵扣价
+		Are3DPrice     string       `db:"are3D_price" json:"are3D_price,omitempty"`       // 3D抵扣价
+		OnlineConsum   int64        `db:"online_consum" json:"online_consum,string"`     // 线上是否支持购买
+		ProvinceSearch int64        `db:"province_search" json:"province_search,string"` // 省id  卡查询使用
+		CitySearch     int64        `db:"city_search" json:"city_search,string"`         // 市id  卡查询使用
+		AreaSearch     int64        `db:"area_search" json:"area_search,string"`         // 区id   卡查询
+		Glasses        int64        `db:"glasses" json:"glasses,string"`                 // 是否提供3d眼镜
+		ByCityId       int64        `db:"by_cityId" json:"by_cityId,string"`            // 博影城市id
+		OnlineShow     int64        `db:"online_show" json:"online_show,string"`         // 线上是否显示
+		PriceMultiple  string       `db:"price_multiple" json:"price_multiple,omitempty"`   // 此影院下排期倍数
+		PriceBase      string       `db:"price_base" json:"price_base,omitempty"`           // 此影院下排期基数
+		TimeCinemaId   int64        `db:"time_cinema_id" json:"time_cinema_id,string"`
+		Code           int64        `db:"code" json:"code,string"`                 // 标识
+		LocalCinema    int64        `db:"local_cinema" json:"local_cinema,string"` // 匹配影院id
+		ZzCode         string       `db:"zz_code" json:"zz_code,omitempty"`           // 专资编码
 	}
 )
 

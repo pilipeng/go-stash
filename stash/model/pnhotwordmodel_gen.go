@@ -35,14 +35,14 @@ type (
 	}
 
 	PnHotWord struct {
-		Id         int64  `db:"id"`          // 主键
-		Tp         int64  `db:"type"`        // 应用页面 （1首页 2商城首页3 门票首页 4演出首页 5电影首页）
-		Word       string `db:"word"`        // 热词
-		RUrl       string `db:"r_url"`       // 跳转url
-		SortNum    int64  `db:"sort_num"`    //  排序号 （倒序）
-		IsShow     int64  `db:"is_show"`     // 是否显示
-		AddTime    int64  `db:"add_time"`    // 添加时间
-		UpdateTime int64  `db:"update_time"` // 修改时间
+		Id         int64  `db:"id" json:"id,string"`                   // 主键
+		Tp         int64  `db:"type" json:"type,string"`                 // 应用页面 （1首页 2商城首页3 门票首页 4演出首页 5电影首页）
+		Word       string `db:"word" json:"word,omitempty"`               // 热词
+		RUrl       string `db:"r_url" json:"r_url,omitempty"`             // 跳转url
+		SortNum    int64  `db:"sort_num" json:"sort_num,string"`       //  排序号 （倒序）
+		IsShow     int64  `db:"is_show" json:"is_show,string"`         // 是否显示
+		AddTime    int64  `db:"add_time" json:"add_time,string"`       // 添加时间
+		UpdateTime int64  `db:"update_time" json:"update_time,string"` // 修改时间
 	}
 )
 

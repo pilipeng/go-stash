@@ -35,10 +35,10 @@ type (
 	}
 
 	PnCakeFlavor struct {
-		Id         int64  `db:"id"`          // 自增主键
-		FlavorId   int64  `db:"flavor_id"`   // 口味id
+		Id         int64  `db:"id" json:"id,string"`          // 自增主键
+		FlavorId   int64  `db:"flavor_id" json:"flavor_id,string"`   // 口味id
 		FlavorName string `db:"flavor_name"` // 口味名称
-		SpuId      int64  `db:"spu_id"`      // 蛋糕spu_id
+		SpuId      int64  `db:"spu_id" json:"spu_id,string"`      // 蛋糕spu_id
 	}
 )
 

@@ -35,41 +35,41 @@ type (
 	}
 
 	PnKkSetmeal struct {
-		Id               int64           `db:"id"`
-		PackageCat       lib.JsonNullString  `db:"packageCat"`    // 套餐大类别
-		IsKKTC           sql.NullInt64   `db:"isKKTC"`        // 是否为康康套餐
-		PackageId        int64           `db:"packageId"`     // 套餐ID
-		PackageName      lib.JsonNullString  `db:"packageName"`   // 套餐名称
-		PackageCode      lib.JsonNullString  `db:"packageCode"`   // 套餐编号
-		HospId           lib.JsonNullString  `db:"hospId"`        // 医院编号
-		OriginalPrice    float64         `db:"originalPrice"` // kk成本
-		PackageImage     lib.JsonNullString  `db:"packageImage"`
-		PackageType      lib.JsonNullString  `db:"packageType"`     // 套餐小类型
-		PackageCityName  string          `db:"packageCityName"` // 城市名称
-		PackageCityCode  int64           `db:"packageCityCode"` // 城市id
-		PackageAreaName  string          `db:"packageAreaName"` // 区名称
-		PackageAreaCode  int64           `db:"packageAreaCode"` // 区id
-		PackageSex       int64           `db:"packageSex"`      // 套餐性别 1男，2女0通用
-		PayType          int64           `db:"payType"`         // 支付类型（1在线支付，0线下支付，2同时支持在线和线下）
-		Attention        lib.JsonNullString  `db:"attention"`       // 注意事项
-		Jcyy             lib.JsonNullString  `db:"jcyy"`            // 检查意义
-		Tchyzt           int64           `db:"tchyzt"`          // 预约可选婚姻状态(0，已婚  1，未婚 2，不限)
-		OnSale           int64           `db:"on_sale"`         // 1:上架 0：下架
-		Sort             int64           `db:"sort"`            // 排序
-		ManPrice         float64         `db:"manPrice"`        // 男性价格
-		WomanPrice       float64         `db:"womanPrice"`      // 女性价格
-		WomanMarryPrice  float64         `db:"womanMarryPrice"` // 女性已婚价格
-		IsKangkang       int64           `db:"is_kangkang"`     // 1:是 0:否
-		Price            float64         `db:"price"`           // 售价
-		Kkzk             sql.NullFloat64 `db:"kkzk"`
-		CManPrice        float64         `db:"c_manPrice"`        // 男性成本价格
-		CWomanPrice      float64         `db:"c_womanPrice"`      // 女性成本价格
-		CWomanMarryPrice float64         `db:"c_womanMarryPrice"` // 女性已婚成本价格
-		IsOnline         int64           `db:"isOnline"`          // 1，上线，0下线
-		UpdateTime       lib.Datetime       `db:"update_time"`       // 更新时间
-		ShelfTime        int64           `db:"shelf_time"`        // 上架时间
-		OffShelfTime     int64           `db:"off_shelf_time"`    // 下架时间
-		CbPrice          float64         `db:"cb_price"`          // 成本价
+		Id               int64              `db:"id" json:"id,string"`
+		PackageCat       lib.JsonNullString `db:"packageCat" json:"packageCat"`                 // 套餐大类别
+		IsKKTC           sql.NullInt64      `db:"isKKTC" json:"isKKTC"`                         // 是否为康康套餐
+		PackageId        int64              `db:"packageId" json:"packageId,string"`         // 套餐ID
+		PackageName      lib.JsonNullString `db:"packageName" json:"packageName"`               // 套餐名称
+		PackageCode      lib.JsonNullString `db:"packageCode" json:"packageCode"`               // 套餐编号
+		HospId           lib.JsonNullString `db:"hospId" json:"hospId"`                         // 医院编号
+		OriginalPrice    float64            `db:"originalPrice" json:"originalPrice,string"` // kk成本
+		PackageImage     lib.JsonNullString `db:"packageImage" json:"packageImage"`
+		PackageType      lib.JsonNullString `db:"packageType" json:"packageType"`                    // 套餐小类型
+		PackageCityName  string             `db:"packageCityName" json:"packageCityName,omitempty"` // 城市名称
+		PackageCityCode  int64              `db:"packageCityCode" json:"packageCityCode,string"` // 城市id
+		PackageAreaName  string             `db:"packageAreaName" json:"packageAreaName,omitempty"` // 区名称
+		PackageAreaCode  int64              `db:"packageAreaCode" json:"packageAreaCode,string"` // 区id
+		PackageSex       int64              `db:"packageSex" json:"packageSex,string"`            // 套餐性别 1男，2女0通用
+		PayType          int64              `db:"payType" json:"payType,string"`                  // 支付类型（1在线支付，0线下支付，2同时支持在线和线下）
+		Attention        lib.JsonNullString `db:"attention" json:"attention"`                         // 注意事项
+		Jcyy             lib.JsonNullString `db:"jcyy" json:"jcyy"`                                   // 检查意义
+		Tchyzt           int64              `db:"tchyzt" json:"tchyzt,string"`                     // 预约可选婚姻状态(0，已婚  1，未婚 2，不限)
+		OnSale           int64              `db:"on_sale" json:"on_sale,string"`                   // 1:上架 0：下架
+		Sort             int64              `db:"sort" json:"sort,string"`                         // 排序
+		ManPrice         float64            `db:"manPrice" json:"manPrice,string"`                // 男性价格
+		WomanPrice       float64            `db:"womanPrice" json:"womanPrice,string"`            // 女性价格
+		WomanMarryPrice  float64            `db:"womanMarryPrice" json:"womanMarryPrice,string"` // 女性已婚价格
+		IsKangkang       int64              `db:"is_kangkang" json:"is_kangkang,string"`           // 1:是 0:否
+		Price            float64            `db:"price" json:"price,string"`                       // 售价
+		Kkzk             sql.NullFloat64    `db:"kkzk" json:"kkzk"`
+		CManPrice        float64            `db:"c_manPrice" json:"c_manPrice,string"`                // 男性成本价格
+		CWomanPrice      float64            `db:"c_womanPrice" json:"c_womanPrice,omistringtempty"`            // 女性成本价格
+		CWomanMarryPrice float64            `db:"c_womanMarryPrice" json:"c_womanMarryPrice,string"` // 女性已婚成本价格
+		IsOnline         int64              `db:"isOnline" json:"isOnline,string"`                    // 1，上线，0下线
+		UpdateTime       lib.Datetime       `db:"update_time" json:"update_time"`                         // 更新时间
+		ShelfTime        int64              `db:"shelf_time" json:"shelf_time,string"`                 // 上架时间
+		OffShelfTime     int64              `db:"off_shelf_time" json:"off_shelf_time,string"`         // 下架时间
+		CbPrice          float64            `db:"cb_price" json:"cb_price,string"`                     // 成本价
 	}
 )
 

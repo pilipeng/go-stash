@@ -1,42 +1,47 @@
 package dal
 
 import (
+	"fmt"
 	"github.com/zeromicro/go-zero/core/logx"
 	"time"
 )
 
-func Table2index(tableName string, createTime int64) string {
+func Table2index(prefix string,tableName string, createTime int64) string {
 	var idx string
 	switch tableName {
 	case "pn_goods":
-		idx = "by_goods"
+		idx = "goods"
 	case "pn_goods_city":
-		idx = "by_goods"
+		idx = "goods"
 	case "pn_hot_word":
-		idx = "by_hot_word"
+		idx = "hot_word"
 	case "pn_order":
-		idx = "by_order"
+		idx = "order"
 		idx = GetOrderIndexName(idx, createTime)
 	case "pn_order_goods":
-		idx = "by_order"
+		idx = "order"
 		idx = GetOrderIndexName(idx, createTime)
 	case "pn_scenic":
-		idx = "by_scenic"
+		idx = "scenic"
 	case "pn_m_cinema":
-		idx="by_m_cinema"
+		idx="m_cinema"
 	case "pn_m_films":
-		idx="by_m_cinema"
+		idx="m_films"
 	case "pn_damai_show":
-		idx="by_m_cinema"
+		idx="damai_show"
 	case "pn_m_order":
-		idx="by_m_cinema"
+		idx = "order"
+		idx = GetOrderIndexName(idx, createTime)
 	case "pn_scenic_order":
-		idx="by_m_cinema"
+		idx = "order"
+		idx = GetOrderIndexName(idx, createTime)
+	case "pn_damai_order":
+		idx = "order"
+		idx = GetOrderIndexName(idx, createTime)
 	default:
-		idx = ""
-		logx.Errorf("Table2index no find map:%s", tableName)
+		logx.Must(fmt.Errorf("Table2index no find map:%s",tableName))
 	}
-	return idx
+	return fmt.Sprintf("%s%s",prefix,idx);
 }
 
 func GetOrderIndexName(indexPre string, createTime int64) string {

@@ -36,54 +36,54 @@ type (
 	}
 
 	PnScenicOrder struct {
-		Id                    int64          `db:"id"`                      // 自增主键
-		OrderSn               string         `db:"order_sn"`                // 订单号
-		CtripOrderSn          string         `db:"ctrip_order_sn"`          // 携程订单号
-		UserId                int64          `db:"user_id"`                 // 用户id
-		UserName              string         `db:"user_name"`               // 用户名（手机号）
-		GoodsId               int64          `db:"goods_id"`                // 商品id
-		GoodsName             string         `db:"goods_name"`              // 商品名称
-		GoodsImg              string         `db:"goods_img"`               // 图片
-		ResourceId            int64          `db:"resource_id"`             // 资源id
-		ResourceName          string         `db:"resource_name"`           // 资源名称
-		Count                 int64          `db:"count"`                   // 数量
-		Amount                float64        `db:"amount"`                  // 总金额（分）组合价
-		Price                 float64        `db:"price"`                   // 博影销售单价
-		CtripPrice            float64        `db:"ctrip_price"`             // 携程价
-		PurchaseTicketsName   string         `db:"purchase_tickets_name"`   // 购票人
-		PurchaseTicketsMobile string         `db:"purchase_tickets_mobile"` // 购票人手机号
-		PayType               int64          `db:"pay_type"`                // 支付方式 1微信 2支付宝
-		OrderStatus           int64          `db:"order_status"`            //  0：未付款  1：已付款  2：已扣点未补差价 3：已退款（退卡退差价） 4：已退款（退卡未退差价）5:已取消6:已确认(第三方收到订单)|已付款   7: 已发码|已发货  8：已完成(虚拟，不存在)
-		SendStatus            int64          `db:"send_status"`             // 信息发送状态 0：未发送  1：短信发送   2：微信发送 3：失败信息发送
-		RefundDesc            string         `db:"refundDesc"`              // 退款描述
-		OrderTime             int64          `db:"order_time"`              // 订单时间
-		PayTime               int64          `db:"pay_time"`                // 支付时间
-		PayCardNum            string         `db:"pay_card_num"`            // 支付卡号（多卡用逗号分隔）
-		PayCardSport          string         `db:"pay_card_sport"`          // 支付点数/次数（多卡用逗号分隔）
-		PayCardType           int64          `db:"pay_card_type"`           // 卡类型（一个订单只能使用同类型的卡）
-		PayCardName           string         `db:"pay_card_name"`           // 卡名称（多卡用逗号分隔）
-		PayCardMoney          float64        `db:"pay_card_money"`          // 卡总抵扣金额
-		TransactionId         string         `db:"transaction_id"`          // 微信/支付宝 补差订单号
-		SurplusMoney          float64        `db:"surplus_money"`           // 补差金额
-		OrderMaizuoSn         string         `db:"order_maizuo_sn"`         // 卖座订单号
-		IsBindingcardPay      int64          `db:"is_bindingcard_pay"`      // 是否绑定卡支付 0：否 1：是
-		SmsSendStatus         int64          `db:"sms_send_status"`         // 短信发送状态 0：失败 1：成功
-		WxSendStatus          int64          `db:"wx_send_status"`          // 微信发送状态 0：失败 1：成功
-		PriceResponse         string         `db:"price_response"`          // 第三方初始价格
-		OriginalPrice         int64          `db:"original_price"`          // 传给票务的价格
-		CardResponse          string         `db:"card_response"`           // 卡支付信息
-		OpenTimeDesc          lib.JsonNullString `db:"open_time_desc"`
-		Venueaddress          string         `db:"venueaddress"`          // 场地地址
-		SelectTimer           lib.Datetime      `db:"select_timer"`          // 选择时间
-		ReceiverAddressInfo   string         `db:"receiver_address_info"` // 详细地址
-		Platform              int64          `db:"platform"`              // 1:手机  2：PC
-		PassengerInfoList     lib.JsonNullString `db:"passenger_info_list"`   // 携程旅客信息列表
-		IsHide                int64          `db:"is_hide"`               // 是否删除 1已删除 0正常
-		ThirdOrderInfo        string         `db:"third_order_info"`      // 第三方订单信息(  ProductUseMsg 产品设置使用方法（入园使用方法，如使用 身份证、携程订单号入园）VendorVoucher 供应商凭证（所有入园凭证拼接）(凭证码：136090505574，电子票：https://t.ctrip.cn/?GTWQmyG/kW8z 。)ImageShortUrl 二维码短链VoucherFileUrl 文件凭证链接VoucherNO  凭证码VoucherCode //二维码辅助码AdmissionCertificate 入园凭证(数字凭证码)ImageUrl //二维码图片地址 二维码优先展示此数据)
-		ThirdOrderStatus      int64          `db:"third_order_status"`    // 携程订单状态订单状态：0:已提交（分销无该状态） 1:确认中 2:已确认（和供应商确认资源） 3:待付款（分销无该状态） 4:已付款 5:成交(部分退) 6:退订（用户已付款取消）7:成交 8:取消（用户未付款取消，分销无该状态）9:取消中（分销无该状态） 10:退订中订单若无退订，订单最终状态为：成交
-		ThirdOrderId          int64          `db:"third_order_id"`        // 携程订单id
-		WxResponse            lib.JsonNullString `db:"wx_response"`           // 微信回调信息
-		OrderNote             string         `db:"order_note"`            // 订单备注
+		Id                    int64              `db:"id" json:"id,string"`                                           // 自增主键
+		OrderSn               string             `db:"order_sn" json:"order_sn,omitempty"`                               // 订单号
+		CtripOrderSn          string             `db:"ctrip_order_sn" json:"ctrip_order_sn,omitempty"`                   // 携程订单号
+		UserId                int64              `db:"user_id" json:"user_id,string"`                                 // 用户id
+		UserName              string             `db:"user_name" json:"user_name,omitempty"`                             // 用户名（手机号）
+		GoodsId               int64              `db:"goods_id" json:"goods_id,string"`                               // 商品id
+		GoodsName             string             `db:"goods_name" json:"goods_name,omitempty"`                           // 商品名称
+		GoodsImg              string             `db:"goods_img" json:"goods_img,omitempty"`                             // 图片
+		ResourceId            int64              `db:"resource_id" json:"resource_id,string"`                         // 资源id
+		ResourceName          string             `db:"resource_name" json:"resource_name,omitempty"`                     // 资源名称
+		Count                 int64              `db:"count" json:"count,string"`                                     // 数量
+		Amount                float64            `db:"amount" json:"amount,string"`                                   // 总金额（分）组合价
+		Price                 float64            `db:"price" json:"price,string"`                                     // 博影销售单价
+		CtripPrice            float64            `db:"ctrip_price" json:"ctrip_price,string"`                         // 携程价
+		PurchaseTicketsName   string             `db:"purchase_tickets_name" json:"purchase_tickets_name,omitempty"`     // 购票人
+		PurchaseTicketsMobile string             `db:"purchase_tickets_mobile" json:"purchase_tickets_mobile,omitempty"` // 购票人手机号
+		PayType               int64              `db:"pay_type" json:"pay_type,string"`                               // 支付方式 1微信 2支付宝
+		OrderStatus           int64              `db:"order_status" json:"order_status,string"`                       //  0：未付款  1：已付款  2：已扣点未补差价 3：已退款（退卡退差价） 4：已退款（退卡未退差价）5:已取消6:已确认(第三方收到订单)|已付款   7: 已发码|已发货  8：已完成(虚拟，不存在)
+		SendStatus            int64              `db:"send_status" json:"send_status,string"`                         // 信息发送状态 0：未发送  1：短信发送   2：微信发送 3：失败信息发送
+		RefundDesc            string             `db:"refundDesc" json:"refundDesc,omitempty"`                          // 退款描述
+		OrderTime             int64              `db:"order_time" json:"order_time,string"`                           // 订单时间
+		PayTime               int64              `db:"pay_time" json:"pay_time,string"`                               // 支付时间
+		PayCardNum            string             `db:"pay_card_num" json:"pay_card_num,omitempty"`                       // 支付卡号（多卡用逗号分隔）
+		PayCardSport          string             `db:"pay_card_sport" json:"pay_card_sport,omitempty"`                   // 支付点数/次数（多卡用逗号分隔）
+		PayCardType           int64              `db:"pay_card_type" json:"pay_card_type,string"`                     // 卡类型（一个订单只能使用同类型的卡）
+		PayCardName           string             `db:"pay_card_name" json:"pay_card_name,omitempty"`                     // 卡名称（多卡用逗号分隔）
+		PayCardMoney          float64            `db:"pay_card_money" json:"pay_card_money,string"`                   // 卡总抵扣金额
+		TransactionId         string             `db:"transaction_id" json:"transaction_id,omitempty"`                   // 微信/支付宝 补差订单号
+		SurplusMoney          float64            `db:"surplus_money" json:"surplus_money,string"`                     // 补差金额
+		OrderMaizuoSn         string             `db:"order_maizuo_sn" json:"order_maizuo_sn,omitempty"`                 // 卖座订单号
+		IsBindingcardPay      int64              `db:"is_bindingcard_pay" json:"is_bindingcard_pay,string"`           // 是否绑定卡支付 0：否 1：是
+		SmsSendStatus         int64              `db:"sms_send_status" json:"sms_send_status,string"`                 // 短信发送状态 0：失败 1：成功
+		WxSendStatus          int64              `db:"wx_send_status" json:"wx_send_status,string"`                   // 微信发送状态 0：失败 1：成功
+		PriceResponse         string             `db:"price_response" json:"price_response,omitempty"`                   // 第三方初始价格
+		OriginalPrice         int64              `db:"original_price" json:"original_price,string"`                   // 传给票务的价格
+		CardResponse          string             `db:"card_response" json:"card_response,omitempty"`                     // 卡支付信息
+		OpenTimeDesc          lib.JsonNullString `db:"open_time_desc" json:"open_time_desc"`
+		Venueaddress          string             `db:"venueaddress" json:"venueaddress,omitempty"`                   // 场地地址
+		SelectTimer           lib.JsonNullString       `db:"select_timer" json:"select_timer"`                             // 选择时间
+		ReceiverAddressInfo   string             `db:"receiver_address_info" json:"receiver_address_info,omitempty"` // 详细地址
+		Platform              int64              `db:"platform" json:"platform,string"`                           // 1:手机  2：PC
+		PassengerInfoList     lib.JsonNullString `db:"passenger_info_list" json:"passenger_info_list"`               // 携程旅客信息列表
+		IsHide                int64              `db:"is_hide" json:"is_hide,string"`                             // 是否删除 1已删除 0正常
+		ThirdOrderInfo        string             `db:"third_order_info" json:"third_order_info,omitempty"`           // 第三方订单信息(  ProductUseMsg 产品设置使用方法（入园使用方法，如使用 身份证、携程订单号入园）VendorVoucher 供应商凭证（所有入园凭证拼接）(凭证码：136090505574，电子票：https://t.ctrip.cn/?GTWQmyG/kW8z 。)ImageShortUrl 二维码短链VoucherFileUrl 文件凭证链接VoucherNO  凭证码VoucherCode //二维码辅助码AdmissionCertificate 入园凭证(数字凭证码)ImageUrl //二维码图片地址 二维码优先展示此数据)
+		ThirdOrderStatus      int64              `db:"third_order_status" json:"third_order_status,string"`       // 携程订单状态订单状态：0:已提交（分销无该状态） 1:确认中 2:已确认（和供应商确认资源） 3:待付款（分销无该状态） 4:已付款 5:成交(部分退) 6:退订（用户已付款取消）7:成交 8:取消（用户未付款取消，分销无该状态）9:取消中（分销无该状态） 10:退订中订单若无退订，订单最终状态为：成交
+		ThirdOrderId          int64              `db:"third_order_id" json:"third_order_id,string"`               // 携程订单id
+		WxResponse            lib.JsonNullString `db:"wx_response" json:"wx_response"`                               // 微信回调信息
+		OrderNote             string             `db:"order_note" json:"order_note,omitempty"`                       // 订单备注
 	}
 )
 

@@ -37,35 +37,35 @@ type (
 	}
 
 	PnMFilms struct {
-		Id           int64          `db:"id"`
-		FilmsId      int64          `db:"filmsId"`      // 影片id
-		Name         string         `db:"name"`         // 电影名
-		OsPicAddr    string         `db:"osPicAddr"`    // os远程图片
-		PicAddr      string         `db:"picAddr"`      // 图片地址
-		VideoUrl     string         `db:"videoUrl"`     // 电影预告片Id
-		ShortInfo    string         `db:"shortInfo"`    // 电影一句话简介
-		Dimensional  string         `db:"dimensional"`  // 电影维度类型： 例如：2D 3D IMAX
-		Tp           string         `db:"type"`         // 影片类型，多个名字使用| 分隔类型：可为空
-		Director     string         `db:"director"`     // 导演，多个名字使用| 分隔 类型可为空
-		Info         string         `db:"info"`         // 电影描述，包含HTML格式数据类型
-		ReleaseDate  string         `db:"releaseDate"`  // 电影首映日期
-		Area         string         `db:"area"`         // 国家地区，多个名字使用|
-		Company      string         `db:"company"`      // 发行公司
-		Length       int64          `db:"length"`       // 片长，以分钟为单位类型
-		Grade        float64        `db:"grade"`        // 电影评分
-		Actors       string         `db:"actors"`       // 主演，多个名字使用|
-		SaleCount    int64          `db:"saleCount"`    // 销售数量
-		Language     string         `db:"language"`     // 语言，多个名字使用| 分隔类型可为空
-		IsShow       int64          `db:"isShow"`       // 1：正在上映，2：即将上映
-		Isrecommend  int64          `db:"isrecommend"`  // 是否推荐 1：推荐 2：不推荐
-		Recommendimg string         `db:"recommendimg"` // 推荐图
-		Deasc        int64          `db:"deasc"`
-		UpdateTime   lib.Datetime      `db:"update_time"` // 更新时间
-		DescCount    int64          `db:"desc_count"`
-		Localfilm    int64          `db:"localfilm"` // 本地匹配字段
-		Code         int64          `db:"code"`      // 标识
-		UnionCode    string         `db:"unionCode"` // 广电总局统一编码
-		AddTime      lib.JsonNullString `db:"add_time"`  // 添加时间
+		Id           int64          `db:"id" json:"id,string"`
+		FilmsId      int64          `db:"filmsId" json:"filmsId,string"`      // 影片id
+		Name         string         `db:"name" json:"name"`         // 电影名
+		OsPicAddr    string         `db:"osPicAddr" json:"osPicAddr"`    // os远程图片
+		PicAddr      string         `db:"picAddr" json:"picAddr"`      // 图片地址
+		VideoUrl     string         `db:"videoUrl" json:"videoUrl"`     // 电影预告片Id
+		ShortInfo    string         `db:"shortInfo" json:"shortInfo"`    // 电影一句话简介
+		Dimensional  string         `db:"dimensional" json:"dimensional"`  // 电影维度类型： 例如：2D 3D IMAX
+		Tp           string         `db:"type" json:"tp"`         // 影片类型，多个名字使用| 分隔类型：可为空
+		Director     string         `db:"director" json:"director"`     // 导演，多个名字使用| 分隔 类型可为空
+		Info         string         `db:"info" json:"info"`         // 电影描述，包含HTML格式数据类型
+		ReleaseDate  string         `db:"releaseDate" json:"releaseDate"`  // 电影首映日期
+		Area         string         `db:"area" json:"area"`         // 国家地区，多个名字使用|
+		Company      string         `db:"company" json:"company"`      // 发行公司
+		Length       int64          `db:"length" json:"length,string"`       // 片长，以分钟为单位类型
+		Grade        float64        `db:"grade" json:"grade,string"`        // 电影评分
+		Actors       string         `db:"actors" json:"actors"`       // 主演，多个名字使用|
+		SaleCount    int64          `db:"saleCount" json:"saleCount,string"`    // 销售数量
+		Language     string         `db:"language" json:"language"`     // 语言，多个名字使用| 分隔类型可为空
+		IsShow       int64          `db:"isShow" json:"isShow,string"`       // 1：正在上映，2：即将上映
+		Isrecommend  int64          `db:"isrecommend" json:"isrecommend,string"`  // 是否推荐 1：推荐 2：不推荐
+		Recommendimg string         `db:"recommendimg" json:"recommendimg"` // 推荐图
+		Deasc        int64          `db:"deasc" json:"deasc,string"`
+		UpdateTime   lib.Datetime      `db:"update_time" json:"update_time"` // 更新时间
+		DescCount    int64          `db:"desc_count" json:"desc_count,string"`
+		Localfilm    int64          `db:"localfilm" json:"localfilm,string"` // 本地匹配字段
+		Code         int64          `db:"code" json:"code,string"`      // 标识
+		UnionCode    string         `db:"unionCode" json:"unionCode"` // 广电总局统一编码
+		AddTime      lib.JsonNullString `db:"add_time" json:"add_time"`  // 添加时间
 	}
 )
 

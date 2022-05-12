@@ -37,36 +37,36 @@ type (
 	}
 
 	PnScenic struct {
-		ScenicId         int64          `db:"scenic_id"`     // 自增id
-		Id               int64          `db:"id"`            // 景点id
-		Name             string         `db:"name"`          // 景点名称
-		Address          string         `db:"address"`       // 景点地址
-		CommentGrade     float64        `db:"comment_grade"` // 点评分（满分 5 分，小数点后 1 位）
-		PmrRecommand     string         `db:"pmr_recommand"` // 产品经理推荐；一般用来描述景点的特色
-		Star             int64          `db:"star"`          // 景区星级（最高 5，即 5A）
-		MarketPrice      float64        `db:"market_price"`  // 市场价（人民币价格，精确至小数点后 2 位）
-		Price            float64        `db:"price"`         // 分销价格（人民币价格，精确至小数点后 2 位）
-		ThemeList        string         `db:"theme_list"`    // 主题列表如：1,2,3
-		IsValid          int64          `db:"is_valid"`      // 有效性（根据返回参数判断）
-		CtripPrice       float64        `db:"ctrip_price"`   // 携程卖价（人民币价格，精确至小数点后 2 位）
-		ImageUrl         string         `db:"image_url"`     // 景点首图链接
-		ImgList          string         `db:"img_list"`      // 图片列表，调用图片接口
-		Url              string         `db:"url"`           // 景点详情页对应 URL
-		OpenTimeDesc     string         `db:"open_time_desc"`
-		FirstBookingDate int64          `db:"first_booking_date"` // 最早可预订日期
-		Longitude        float64        `db:"longitude"`          // 经度（数据取自高德） 精确到小数点后六位
-		Latitude         float64        `db:"latitude"`           // 纬度（数据取自高德）精确到小数点后六位
-		UpdateTime       int64          `db:"update_time"`        // 更新时间
-		IsShow           int64          `db:"is_show"`            // 是否显示
-		RecommendSort    int64          `db:"recommend_sort"`     // 推荐排序
-		CountryId        int64          `db:"country_id"`         // 国家id
-		ProvinceId       int64          `db:"province_id"`        // 省id
-		CityId           int64          `db:"city_id"`            // 城市id
-		CityEname        string         `db:"city_ename"`         // 城市拼音
-		CityInfo         string         `db:"city_info"`          // 城市信息
-		InChina          int64          `db:"in_china"`           // 是否国内1:国内 2国外
-		CityCode         int64          `db:"city_code"`          // 博弈城市id
-		Test             lib.JsonNullString `db:"test"`               // test
+		ScenicId         int64              `db:"scenic_id" json:"scenic_id,string"`         // 自增id
+		Id               int64              `db:"id" json:"id,string"`                       // 景点id
+		Name             string             `db:"name" json:"name,omitempty"`                   // 景点名称
+		Address          string             `db:"address" json:"address,omitempty"`             // 景点地址
+		CommentGrade     float64            `db:"comment_grade" json:"comment_grade,string"` // 点评分（满分 5 分，小数点后 1 位）
+		PmrRecommand     string             `db:"pmr_recommand" json:"pmr_recommand,omitempty"` // 产品经理推荐；一般用来描述景点的特色
+		Star             int64              `db:"star" json:"star,string"`                   // 景区星级（最高 5，即 5A）
+		MarketPrice      float64            `db:"market_price" json:"market_price,string"`   // 市场价（人民币价格，精确至小数点后 2 位）
+		Price            float64            `db:"price" json:"price,string"`                 // 分销价格（人民币价格，精确至小数点后 2 位）
+		ThemeList        string             `db:"theme_list" json:"theme_list,omitempty"`       // 主题列表如：1,2,3
+		IsValid          int64              `db:"is_valid" json:"is_valid,string"`           // 有效性（根据返回参数判断）
+		CtripPrice       float64            `db:"ctrip_price" json:"ctrip_price,string"`     // 携程卖价（人民币价格，精确至小数点后 2 位）
+		ImageUrl         string             `db:"image_url" json:"image_url,omitempty"`         // 景点首图链接
+		ImgList          string             `db:"img_list" json:"img_list,omitempty"`           // 图片列表，调用图片接口
+		Url              string             `db:"url" json:"url,omitempty"`                     // 景点详情页对应 URL
+		OpenTimeDesc     string             `db:"open_time_desc" json:"open_time_desc,omitempty"`
+		FirstBookingDate int64              `db:"first_booking_date" json:"first_booking_date,string"` // 最早可预订日期
+		Longitude        float64            `db:"longitude" json:"longitude,string"`                   // 经度（数据取自高德） 精确到小数点后六位
+		Latitude         float64            `db:"latitude" json:"latitude,string"`                     // 纬度（数据取自高德）精确到小数点后六位
+		UpdateTime       int64              `db:"update_time" json:"update_time,string"`               // 更新时间
+		IsShow           int64              `db:"is_show" json:"is_show,string"`                       // 是否显示
+		RecommendSort    int64              `db:"recommend_sort" json:"recommend_sort,string"`         // 推荐排序
+		CountryId        int64              `db:"country_id" json:"country_id,string"`                 // 国家id
+		ProvinceId       int64              `db:"province_id" json:"province_id,string"`               // 省id
+		CityId           int64              `db:"city_id" json:"city_id,string"`                       // 城市id
+		CityEname        string             `db:"city_ename" json:"city_ename,omitempty"`                 // 城市拼音
+		CityInfo         string             `db:"city_info" json:"city_info,omitempty"`                   // 城市信息
+		InChina          int64              `db:"in_china" json:"in_china,string"`                     // 是否国内1:国内 2国外
+		CityCode         int64              `db:"city_code" json:"city_code,string"`                   // 博弈城市id
+		Test             lib.JsonNullString `db:"test" json:"test"`                                       // test
 	}
 )
 

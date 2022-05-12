@@ -83,8 +83,8 @@ type (
 		IsHide              int64   `db:"is_hide" json:"is_hide,string"`                             // 是否被删除
 		PriceDifference     float64 `db:"price_difference" json:"price_difference,string"`           // 微信补差金额（废弃）
 		PriceDifferenceBack float64 `db:"price_difference_back" json:"price_difference_back,string"` // 微信补差金额备份（废弃）
-		OrderMaizuoSn       string  `db:"orderMaizuoSn" json:"order_maizuo_sn"`                      // 卖座订单号
-		SurplusMoney        float64 `db:"surplusMoney" json:"surplus_money,string"`                  // 微信补差金额
+		OrderMaizuoSn       string  `db:"orderMaizuoSn" json:"orderMaizuoSn"`                      // 卖座订单号
+		SurplusMoney        float64 `db:"surplusMoney" json:"surplusMoney,string"`                  // 微信补差金额
 		//PaySerialNo         string  `db:"pay_serial_no" json:"pay_serial_no"`                        // 第三方支付流水号
 	}
 

@@ -22,6 +22,7 @@ type (
 		Compress      bool   `json:",default=false"`
 		Username	  string `json:",optional"`
 		Password	  string `json:",optional"`
+		IndexPrefix	  string `json:",default="`
 	}
 
 	Filter struct {

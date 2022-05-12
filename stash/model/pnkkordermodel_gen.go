@@ -36,46 +36,46 @@ type (
 	}
 
 	PnKkOrder struct {
-		OrderId             int64          `db:"order_id"`
-		UserId              int64          `db:"user_id"`               // 用户id
-		UserName            string         `db:"user_name"`             // 用户名手机号
-		OrderSn             string         `db:"order_sn"`              // 订单号
-		PayStatus           int64          `db:"pay_status"`            // 付款状态 0：待付款 1：已付款 2:支付失败 3:未补差价4:已取消5:已退款6：已完成
-		Regdate             string         `db:"regdate"`               // 预约日期
-		PackageCode         string         `db:"package_code"`          // 套餐编号
-		HospId              string         `db:"hospId"`                // 医院编号
-		Name                string         `db:"name"`                  // 体检人姓名
-		Sex                 int64          `db:"sex"`                   // 1，性别1男，2女，当套餐性别不为0时
-		Married             int64          `db:"married"`               // 如：1，1已婚，0未婚；
-		ContactTel          string         `db:"contactTel"`            // 联系电话
-		CardNumber          string         `db:"cardNumber"`            // 证件号码
-		CardType            int64          `db:"cardType"`              // 证件类型
-		OnlyNum             int64          `db:"onlyNum"`               // 第三方唯一编码
-		PayType             int64          `db:"payType"`               // 支付方式；如1，当机构支付方式不为2时，必须与机构的支付方式相对应，1在线支付，0线下支付
-		TotalPrice          float64        `db:"total_price"`           // 商品总价
-		CardNo              string         `db:"card_no"`               // 支付卡号
+		OrderId             int64          `db:"order_id" json:"order_id"`
+		UserId              int64          `db:"user_id" json:"user_id"`               // 用户id
+		UserName            string         `db:"user_name" json:"user_name"`             // 用户名手机号
+		OrderSn             string         `db:"order_sn" json:"order_sn"`              // 订单号
+		PayStatus           int64          `db:"pay_status" json:"pay_status"`            // 付款状态 0：待付款 1：已付款 2:支付失败 3:未补差价4:已取消5:已退款6：已完成
+		Regdate             string         `db:"regdate" json:"regdate"`               // 预约日期
+		PackageCode         string         `db:"package_code" json:"package_code"`          // 套餐编号
+		HospId              string         `db:"hospId" json:"hosp_id"`                // 医院编号
+		Name                string         `db:"name" json:"name"`                  // 体检人姓名
+		Sex                 int64          `db:"sex" json:"sex"`                   // 1，性别1男，2女，当套餐性别不为0时
+		Married             int64          `db:"married" json:"married"`               // 如：1，1已婚，0未婚；
+		ContactTel          string         `db:"contactTel" json:"contactTel"`            // 联系电话
+		CardNumber          string         `db:"cardNumber" json:"cardNumber"`            // 证件号码
+		CardType            int64          `db:"cardType" json:"cardType"`              // 证件类型
+		OnlyNum             int64          `db:"onlyNum" json:"onlyNum"`               // 第三方唯一编码
+		PayType             int64          `db:"payType" json:"payType"`               // 支付方式；如1，当机构支付方式不为2时，必须与机构的支付方式相对应，1在线支付，0线下支付
+		TotalPrice          float64        `db:"total_price" json:"total_price"`           // 商品总价
+		CardNo              string         `db:"card_no" json:"card_no"`               // 支付卡号
 		//CardType            int64          `db:"card_type"`             // 卡类型  1：储值卡 2：次卡
-		CardTypeName        string         `db:"card_type_name"`        // 卡类型名称
-		CardPayPrice        float64        `db:"card_pay_price"`        // 卡券支付金额（积分金额）
-		Remark              string         `db:"remark"`                // 附言
-		OrderTime           int64          `db:"order_time"`            // 订单时间
-		PayTime             int64          `db:"pay_time"`              // 支付时间
-		OrderExtendSnapshot string         `db:"order_extend_snapshot"` // 订单其他信息快照（商品分组信息、商品价、邮费、总计等）
-		PayLimitTime        int64          `db:"pay_limit_time"`        // 未支付过期时间
-		WxResponse          lib.JsonNullString `db:"wx_response"`           // 微信回调结果
-		IsShow              int64          `db:"is_show"`               // 订单是否显示 0：否 1：是
-		Platform            int64          `db:"platform"`              // 订单平台  1：PC   2：手机
-		PackageName         string         `db:"packageName"`           // 套餐名称
-		HospName            string         `db:"hospName"`              // 机构名称
-		WxPrice             float64        `db:"wx_price"`              // 微信支付金额
-		CardResponse        lib.JsonNullString `db:"card_response"`         // 支付返回结果
-		OrderStatus         int64          `db:"order_status"`          // 1:预约中2：预约成功 3：预约失败 4：退款处理中 5：退款成功（已退款） 6、已完成 8、已关闭
+		CardTypeName        string         `db:"card_type_name" json:"card_type_name"`        // 卡类型名称
+		CardPayPrice        float64        `db:"card_pay_price" json:"card_pay_price"`        // 卡券支付金额（积分金额）
+		Remark              string         `db:"remark" json:"remark"`                // 附言
+		OrderTime           int64          `db:"order_time" json:"order_time"`            // 订单时间
+		PayTime             int64          `db:"pay_time" json:"pay_time"`              // 支付时间
+		OrderExtendSnapshot string         `db:"order_extend_snapshot" json:"order_extend_snapshot"` // 订单其他信息快照（商品分组信息、商品价、邮费、总计等）
+		PayLimitTime        int64          `db:"pay_limit_time" json:"pay_limit_time"`        // 未支付过期时间
+		WxResponse          lib.JsonNullString `db:"wx_response" json:"wx_response"`           // 微信回调结果
+		IsShow              int64          `db:"is_show" json:"is_show"`               // 订单是否显示 0：否 1：是
+		Platform            int64          `db:"platform" json:"platform"`              // 订单平台  1：PC   2：手机
+		PackageName         string         `db:"packageName" json:"package_name"`           // 套餐名称
+		HospName            string         `db:"hospName" json:"hospName"`              // 机构名称
+		WxPrice             float64        `db:"wx_price" json:"wx_price"`              // 微信支付金额
+		CardResponse        lib.JsonNullString `db:"card_response" json:"card_response"`         // 支付返回结果
+		OrderStatus         int64          `db:"order_status" json:"order_status"`          // 1:预约中2：预约成功 3：预约失败 4：退款处理中 5：退款成功（已退款） 6、已完成 8、已关闭
 		//OrderId             string         `db:"orderId"`               // 康康订单号id
-		KResponse           lib.JsonNullString `db:"k_response"`            // 康康回调
-		KTime               int64          `db:"k_time"`
-		TotalBasePrice      float64        `db:"total_base_price"` // 成本价格
-		SmsLog              string         `db:"sms_log"`          // 短信信息
-		ThirdNum            string         `db:"thirdNum"`         // 康康订单
+		KResponse           lib.JsonNullString `db:"k_response" json:"k_response"`            // 康康回调
+		KTime               int64          `db:"k_time" json:"k_time"`
+		TotalBasePrice      float64        `db:"total_base_price" json:"total_base_price"` // 成本价格
+		SmsLog              string         `db:"sms_log" json:"sms_log"`          // 短信信息
+		ThirdNum            string         `db:"thirdNum" json:"thirdNum"`         // 康康订单
 	}
 )
 
